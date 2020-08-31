@@ -1,31 +1,15 @@
 # seam carving
-Generates content aware resized gifs
+Library for seamcarving images
 
-## Safety
+## Usage
+Depends [image 0.23](https://crates.io/crates/image)
 
-The main priority of this project is runtime performance. `unsafe` is used readily and safety should be guaranteed by optional checks (feature `fastimage_debug`).
-
-## Example
-
-<img src="example.gif" alt="Example gif" width="200"/>
-
-## CLI
-
-```Animated seam carving 
-Authors: DasEtwas, Friz64
-
-USAGE:
-    seam-carving [OPTIONS] --input <FILE>
-
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-
-OPTIONS:
-    -f, --fps <FPS>            GIF FPS, is converted into GIF units (10ms) (float) [default: 20]
-    -i, --input <FILE>         Input file path
-    -l, --length <SECONDS>     GIF length in seconds (float) [default: 1.0]
-    -o, --output <FILE>        Output file [default: output.gif]
-    -q, --quality <QUALITY>    GIF Quality [1 - 100] [default: 30]
-    -s, --scale <PERCENT>      Final scale of the last frame in percent (float) [default: 10]
 ```
+let img = image::open("test.png")?;
+let resized = seam_carving::easy_resize(&img, 1920, 1080); // Can be anything you want
+resized.save("test-r.png")?;
+```
+
+## To-Do
+- Improve Performance \
+ *We are currently 3x slower than ImageMagick's implementation*
