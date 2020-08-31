@@ -4,3 +4,5 @@ Cargo.lock
 /.vscode
 /.idea
 **/*.gif
+*.png
+seam-carving*
